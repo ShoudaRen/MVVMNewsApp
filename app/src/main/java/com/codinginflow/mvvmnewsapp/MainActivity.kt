@@ -26,12 +26,10 @@ class MainActivity : AppCompatActivity() {
             searchingNewsFragment,
             bookmarksFragment
         )
-
     //模块选择
     private var selectedIndex = 0
     //选中的哪个frag
     private val selectedFragment get() = fragments[selectedIndex]
-
 
     //利用 FragmentManager 类提供的方法，您可以在运行时为 Activity 添加、移除和替换 Fragment，从而营造出动态的用户体验。
     private fun selectedFragment(selectFragment: Fragment) {
@@ -55,12 +53,10 @@ class MainActivity : AppCompatActivity() {
             is BookmarksFragment -> getString(R.string.title_bookmarks)
             else -> ""
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         //A: 绑定类的 inflate() 方法来扩充视图层次结构并将对象绑定到该层次结构 绑定的是ActivityMainXML里的数据
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -103,7 +99,6 @@ class MainActivity : AppCompatActivity() {
             selectedFragment(fragment)
             true
         }
-
     }
     //为了防止在search 和bookmark framgment的后退时直接退出应用
     override fun onBackPressed() {
@@ -113,14 +108,12 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
-
     }
     //把新的selectedIndex储存到InstanceState （ Bundle）里
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(KEY_SELECTED_INDEX, selectedIndex)
     }
-
     companion object {
         //Optional tag name for the fragment, to later retrieve the fragment with FragmentManager.findFragmentByTag(String).
         //fragment TRag
